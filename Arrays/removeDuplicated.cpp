@@ -65,3 +65,32 @@ for(int i=0;i<arr.size();i++){
 
 return 0;
 }
+
+/*
+
+ //veriation of problem lc  80
+
+ int removeDuplicates(vector<int>& nums) {
+        int size=nums.size();
+        if(size<=2){
+            return size;
+        }
+
+        vector<int>arr={nums[0],nums[1]};
+        int index=2;
+        int insertIndex=1;
+        
+        
+        while(index<size){
+            if(nums[index]==arr[insertIndex]&&nums[index]==arr[insertIndex-1]){
+                index++;
+            }else{
+                insertIndex++;
+               arr.push_back(nums[index++]);
+            }
+        }
+        nums=arr;
+        return insertIndex+1;
+       
+    }
+*/
