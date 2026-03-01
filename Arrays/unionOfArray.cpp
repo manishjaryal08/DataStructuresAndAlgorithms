@@ -30,7 +30,7 @@ The element 7 is common to both, 3, 4, 6, 9 are from nums1 and 1, 5, 8 is from n
 #include <vector>
 using namespace std;
 // 1st method
- vector<int> findUnion(vector<int> &a, vector<int> &b) {
+     vector<int> findUnion(vector<int> &a, vector<int> &b) {
         // code here
         
         int i=0;
@@ -38,31 +38,21 @@ using namespace std;
         int aSize=a.size();
         int bSize=b.size();
         vector<int>c;
-        
-        if(a[i]==b[j]){
-            c.push_back(a[i]);
-            i++;j++;
-        }else if(a[i]<b[j]){
-            c.push_back(a[i]);
-            i++;
-        }else{
-            c.push_back(b[j]);
-            j++;
-        }
+     
        
         
         while(i<aSize && j< bSize){
             
             if(a[i]==b[j]){
-                 if(c.back()!=a[i]){
+                 if(c.empty() || c.back()!=a[i]){
                 c.push_back(a[i]);
             }    i++;j++;
             }else if(a[i]<b[j]){
-                 if(c.back()!=a[i])
+                 if(c.empty() || c.back()!=a[i])
                 c.push_back(a[i]);
                 i++;
             }else{
-                 if( c.back()!=b[j])
+                 if( c.empty() || c.back()!=b[j])
                 c.push_back(b[j]);
                 j++;
             }
@@ -70,19 +60,18 @@ using namespace std;
         }
         
         while(i<aSize){
-             if(c.back()!=a[i])
+             if(c.empty() || c.back()!=a[i])
             c.push_back(a[i]);
             i++;
         }
         while(j<bSize){
-             if( c.back()!=b[j])
+             if(c.empty() || c.back()!=b[j])
             c.push_back(b[j]);
             j++;
         }
         return c;
         
     }
-
 
 
 int main(){
