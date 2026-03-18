@@ -27,11 +27,13 @@ Explanation:
 nums[1] + nums[5] = 3 + (-3) = 0
 */
 #include<iostream>
-#include <vector>   
+#include <vector> 
+#include<unordered_map>
 
 using namespace std;
   vector<int> twoSum(vector<int>& nums, int target) { 
-   vector<int>result;
+  /*
+    vector<int>result;
         for(int i=0;i<nums.size();i++){
             for(int j=i+1;j<nums.size();j++){
                 if(nums[i]+nums[j]==target){
@@ -42,7 +44,26 @@ using namespace std;
             }
         }
         return result;
-    }
+    */
+   //optimal way
+   vector<int>result;
+      unordered_map<int,int>map;
+      for(int i=0;i<nums.size();i++){
+        if(map.empty()){
+            map[nums[i]]=i;
+        }else if(map.find(target-nums[i])!=map.end()){
+            result.push_back(i);
+            result.push_back(map[target-nums[i]]);
+            return result;
+        }else{
+            map[nums[i]]=i;
+        }
+
+      }
+      return result;
+    
+    
+        }
 int main(){
     vector<int>arr={2,7,11,15};
     vector<int>result=twoSum(arr,9);
