@@ -28,6 +28,7 @@ The number 1 appears 4 times in the 6 sized array
 #include<math.h>
 using namespace std;
   int majorityElement(vector<int>& nums) {
+    /*
         unordered_map<int ,int>hmap;
         for(int i=0;i<nums.size();i++){
             if(hmap.find(nums[i])!=hmap.end()){
@@ -44,6 +45,34 @@ using namespace std;
             }
         }
         return -1;
+        */
+
+        //Moore's voting algo
+      int elmt=0;
+      int cnt=0;
+      for(int i=0;i<nums.size();i++){
+        if(cnt==0){
+            elmt=nums[i];
+        }
+        if(elmt==nums[i]){
+            cnt++;
+        }else{
+            cnt--;
+        }
+      }
+      //verify elmt exist
+    
+      cnt=0;
+      for(int i=0;i<nums.size();i++){
+        if(nums[i]==elmt){
+            cnt++;
+        }
+      }
+     if(cnt>(floor(nums.size()/2))){
+         return elmt;
+     }else{
+       return -1;
+      }
         
     }
 int main(){
