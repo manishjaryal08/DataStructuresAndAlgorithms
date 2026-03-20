@@ -47,8 +47,38 @@ int maxSubArray(vector<int>& nums) {
      }
 return max;
     }
+    vector<int> printSubArray(vector<int>nums){
+        int sum=0;
+        int start=-1;
+        int end=-1;
+     int max=INT_MIN;
+     for(int i=0;i<nums.size();i++){
+       if(sum==0){
+        start=i;
+       }
+        sum=sum+nums[i];
+      
+        if(sum>max){
+            max=sum;
+            end=i;
+        }
+          if(sum<0){
+            sum=0;
+        }
+        
+     }
+     vector<int>result;
+     result.push_back(start);
+     result.push_back(end);
+     return result;
+
+    } 
 int main(){
 
-
+vector<int> arr={-2,-3,4,-1,-2,1,5,-3};
+vector<int>ans=printSubArray(arr);
+for(int i=ans[0];i<=ans[1];i++){
+    cout<<arr[i]<<" ";
+}
 return 0;
 }
