@@ -75,7 +75,6 @@ void  nxtpermuation(vector<int>&arr){
     swap(arr[index],arr[max]);
     sort(arr.begin()+index+1,arr.end());
 
-    
 
 }
 int main(){
