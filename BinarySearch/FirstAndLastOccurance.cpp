@@ -60,7 +60,51 @@ return -1;
         arr[1]=higherIndex;
         return arr;
     }
+    int firstOccurance(vector<int>&arr,int target){
+        int s=0;
+        int e=arr.size()-1;
+        int m;
+        int result=-1;
+        while(s<=e){
+            m=s+(e-s)/2;
+            if(arr[m]==target){
+                result=m;
+                e=m-1;
+            }else if(arr[m]<target){
+                s=m+1;
+            }else{
+                e=m-1;
+            }
+        }
+        return  result;
+    }
+    int lastOccurance(vector<int>&arr,int target){
+         int s=0;
+        int e=arr.size()-1;
+        int m;
+        int result=-1;
+        while(s<=e){
+            m=s+(e-s)/2;
+            if(arr[m]==target){
+                result=m;
+                s=m+1;
+            }else if(arr[m]<target){
+                s=m+1;
+            }else{
+                e=m-1;
+            }
+        }
+        return  result;
+    }
+    vector<int> FirstLastOccurance(vector<int>&arr,int target){
+        int first=firstOccurance(arr,target);
+        int last=lastOccurance(arr,target);
+      vector<int>res={first,last};
+      return res;
+    }
 int main(){
-
+        vector<int>arr={4,4,4};
+        cout<<FirstLastOccurance(arr,4)[0]<<endl;
+        cout<<FirstLastOccurance(arr,4)[1];
 return 0;
 }
