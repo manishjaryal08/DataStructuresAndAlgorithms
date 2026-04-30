@@ -25,23 +25,29 @@ Explanation: Your function can return either index number 1 where the peak eleme
 using namespace std;
 int findPeakElement(vector<int>& nums) {
 
-       int low=0;
-       int high=nums.size()-1;
+        int low=1;
+       int high=nums.size()-2;
        int mid;
        int size=nums.size();
+       
+       if(nums.size()==1||nums[0]>nums[1]){
+        return 0;
+       }
+       if(nums[high]<nums[high+1]){
+        return high+1;
+       }
        while(low<high){
         mid=low+(high-low)/2;
-        if(mid>0&&mid<size-1&&nums[mid]>nums[mid+1]&&nums[mid]>nums[mid-1]){
+        if(nums[mid]>nums[mid+1]&&nums[mid]>nums[mid-1]){
             return mid;
         }
-        if(mid<size-1&&nums[mid+1]>nums[mid]){
+        if(nums[mid+1]>nums[mid]){
             low=mid+1;
         }else{
             high=mid-1;
         }
        }
        return low;
-        
     }
 int main(){
 
